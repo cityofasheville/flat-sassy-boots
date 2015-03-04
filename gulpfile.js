@@ -108,7 +108,7 @@ gulp.task('reload', ['styles'], function() {
 //***** WATCH TASKS ******//
 
 gulp.task('watch',function () {
-  gulp.watch('sass/*.scss', ['reload']);
+  gulp.watch('sass/**/*.scss', ['styles']);
 });
 
 
@@ -119,6 +119,14 @@ gulp.task('styles', function () {
 	    .on('error', handleError)
 	    .pipe(gulp.dest('')) 
 	    .pipe(size());
+});
+
+gulp.task('bpress-styles', function () {
+    return gulp.src('sass/buddypress.scss')
+      .pipe(sass({style: 'expanded'}))
+      .on('error', handleError)
+      .pipe(gulp.dest('buddypress/css')) 
+      .pipe(size());
 });
 
 

@@ -7,34 +7,53 @@
  * @package Flat Sassy Boots
  */
 
-if ( ! function_exists( 'the_posts_navigation' ) ) :
-/**
- * Display navigation to next/previous set of posts when applicable.
- *
- * @todo Remove this function when WordPress 4.3 is released.
- */
-function the_posts_navigation() {
-	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-		return;
+if ( ! function_exists( 'the_posts_navigation_flat_sassy_boots' ) ) :
+
+	function the_posts_navigation_flat_sassy_boots() {
+		// Don't print empty markup if there's only one page.
+		if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+			return;
+		}
+
+		$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+
+		$pagenum_link = html_entity_decode( get_pagenum_link() );
+		$query_args   = array();
+		$url_parts    = explode( '?', $pagenum_link );
+
+		if ( isset( $url_parts[1] ) ) {
+			wp_parse_str( $url_parts[1], $query_args );
+		}
+
+		$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
+		$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+
+		$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+		$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+
+		// Set up paginated links.
+		$links = paginate_links( array(
+			'base'     => $pagenum_link,
+			'format'   => $format,
+			'total'    => $GLOBALS['wp_query']->max_num_pages,
+			'current'  => $paged,
+			'mid_size' => 2,
+			'add_args' => array_map( 'urlencode', $query_args ),
+			'prev_text' => __( 'Previous', 'flat-sassy-boots' ),
+			'next_text' => __( 'Next', 'flat-sassy-boots' ),
+	    'type'      => 'list',
+		) );
+
+		if ( $links ) :
+
+		?>
+		<nav class="navigation paging-navigation" role="navigation">
+			<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'flat-sassy-boots' ); ?></h1>
+				<?php echo $links; ?>
+		</nav><!-- .navigation -->
+		<?php
+		endif;
 	}
-	?>
-	<nav class="navigation posts-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'flat-sassy-boots' ); ?></h2>
-		<div class="nav-links">
-
-			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'flat-sassy-boots' ) ); ?></div>
-			<?php endif; ?>
-
-			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'flat-sassy-boots' ) ); ?></div>
-			<?php endif; ?>
-
-		</div><!-- .nav-links -->
-	</nav><!-- .navigation -->
-	<?php
-}
 endif;
 
 if ( ! function_exists( 'the_post_navigation' ) ) :
@@ -52,14 +71,16 @@ function the_post_navigation() {
 		return;
 	}
 	?>
-	<nav class="navigation post-navigation" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'flat-sassy-boots' ); ?></h2>
-		<div class="nav-links">
-			<?php
-				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
-				next_post_link( '<div class="nav-next">%link</div>', '%title' );
-			?>
-		</div><!-- .nav-links -->
+	<nav class="navigation post-navigation col-xs-12" role="navigation">
+			<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'flat-sassy-boots' ); ?></h2>
+			<div class="nav-links"> 
+				<?php
+					//previous_post_link( '<div class="nav-previous"><div class="nav-indicator">' . _x( 'Previous Post:', 'Previous post', 'flat-sassy-boots' ) . '</div><h1>%link</h1><i class="fa fa-arrow-left"></i></div>', '%title' );
+					//next_post_link(     '<div class="nav-next"><div class="nav-indicator">' . _x( 'Next Post:', 'Next post', 'flat-sassy-boots' ) . '</div><h1>%link</h1><i class="fa fa-arrow-right"></i></div>', '%title' );
+					previous_post_link( '<div class="nav-previous"><strong>%link</strong></div>', '%title' );
+					next_post_link( '<div class="nav-next"><strong>%link</strong></div>', '%title' );
+				?>
+			</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
 	<?php
 }
@@ -106,12 +127,14 @@ function flat_sassy_boots_entry_footer() {
 	if ( 'post' == get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( __( ', ', 'flat-sassy-boots' ) );
+
+
 		if ( $categories_list && flat_sassy_boots_categorized_blog() ) {
-			printf( '<span class="cat-links">' . __( 'Posted in %1$s', 'flat-sassy-boots' ) . '</span>', $categories_list );
+			printf( '<div class="category-list">' . __( 'Posted in %1$s', 'flat-sassy-boots' ) . '</div>', $categories_list );
 		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'flat-sassy-boots' ) );
+		$tags_list = get_the_tag_list( '<ul><li><i class="fa fa-tag"></i> ', '</li><li><i class="fa fa-tag"></i> ', '</li></ul>');
 		if ( $tags_list ) {
 			printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'flat-sassy-boots' ) . '</span>', $tags_list );
 		}
@@ -264,3 +287,93 @@ function flat_sassy_boots_category_transient_flusher() {
 }
 add_action( 'edit_category', 'flat_sassy_boots_category_transient_flusher' );
 add_action( 'save_post',     'flat_sassy_boots_category_transient_flusher' );
+
+
+function flat_sassy_boots_navbar_right_menu(){
+	if ( has_nav_menu( 'navbar-right' ) ) {
+		wp_nav_menu(
+			array(
+				'menu'              => 'navbar-right',
+        'theme_location'    => 'navbar-right',
+        'depth'             => 1,
+        'container'         => 'ul',
+        'container_class'   => 'nav navbar-nav navbar-right',
+				'container_id'      => 'bs-navbar-right',
+        'menu_class'        => 'nav navbar-nav',
+        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+        'walker'            => new wp_bootstrap_navwalker()
+			)
+		);
+  }
+}
+
+function flat_sassy_boots_bp_directory_groups_search_form() {
+	$default_search_value = bp_get_search_default_text( 'groups' );
+	$search_value         = !empty( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : $default_search_value;
+
+	$search_form_html = '<form action="" method="get" id="search-groups-form">
+		 <div class="input-group">
+      <input class = "form-control" type="text" name="s" id="groups_search" placeholder="'. esc_attr( $search_value ) .'" />      <span class="input-group-btn">
+        <input type="submit" id="groups_search_submit" name="groups_search_submit" value="'. __( 'Search', 'buddypress' ) .'">
+      </span>
+    </div>
+	</form>';
+
+	echo apply_filters( 'bp_directory_groups_search_form', $search_form_html );
+
+}
+
+function flat_sassy_boots_bp_directory_members_search_form() {
+
+	$default_search_value = bp_get_search_default_text( 'members' );
+	$search_value         = !empty( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : $default_search_value;
+
+	$search_form_html = '<form action="" method="get" id="search-members-form">
+		<div class="input-group">
+      <input class = "form-control" type="text" name="s" id="members_search" placeholder="'. esc_attr( $search_value ) .'" />      <span class="input-group-btn">
+        <input type="submit" id="members_search_submit" name="groups_search_submit" value="'. __( 'Search', 'buddypress' ) .'"/>
+      </span>
+    </div>
+	</form>';
+
+	/**
+	 * Filters the Members component search form.
+	 *
+	 * @since BuddyPress (1.9.0)
+	 *
+	 * @param string $search_form_html HTML markup for the member search form.
+	 */
+	echo apply_filters( 'bp_directory_members_search_form', $search_form_html );
+}
+
+
+
+
+/**
+ * Output the Group members template
+ *
+ * @since BuddyPress (?)
+ *
+ * @return string html output
+ */
+function flat_sassy_boots_bp_groups_members_template_part() {
+	?>
+	<div class="item-list-tabs col-xs-12" style = "margin-top : 20px;" id="subnav" role="navigation">
+		<ul>
+			<li class="groups-members-search" role="search">
+				<?php flat_sassy_boots_bp_directory_members_search_form(); ?>
+			</li>
+
+			<?php bp_groups_members_filter(); ?>
+			<?php do_action( 'bp_members_directory_member_sub_types' ); ?>
+
+		</ul>
+	</div>
+
+	<div id="members-group-list" class="group_members dir-list">
+
+		<?php bp_get_template_part( 'groups/single/members' ); ?>
+
+	</div>
+	<?php
+}

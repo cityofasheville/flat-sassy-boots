@@ -46,11 +46,14 @@ function flat_sassy_boots_setup() {
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
-	//add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' );
+	add_image_size('large-thumb', 1060, 650, true);
+	add_image_size('index-thumb', 780, 250, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'flat-sassy-boots' ),
+		'navbar-right' => __('Navbar Right Menu', 'flat-sassy-boots'),
 	) );
 
 	/*
@@ -58,7 +61,7 @@ function flat_sassy_boots_setup() {
 	 * to output valid HTML5.
 	 */
 	add_theme_support( 'html5', array(
-		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
+		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',  'buddypress',
 	) );
 
 	/*
@@ -70,10 +73,10 @@ function flat_sassy_boots_setup() {
 	) );
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'flat_sassy_boots_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
+	// add_theme_support( 'custom-background', apply_filters( 'flat_sassy_boots_custom_background_args', array(
+	// 	'default-color' => 'ffffff',
+	// 	'default-image' => '',
+	// ) ) );
 }
 endif; // flat_sassy_boots_setup
 add_action( 'after_setup_theme', 'flat_sassy_boots_setup' );
@@ -93,6 +96,16 @@ function flat_sassy_boots_widgets_init() {
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Widgets', 'flat-sassy-boots' ),
+		'id'            => 'sidebar-2',
+		'description'   => 'Footer widgets area that appears in the footer of the site',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
 }
 add_action( 'widgets_init', 'flat_sassy_boots_widgets_init' );
 
@@ -101,10 +114,26 @@ add_action( 'widgets_init', 'flat_sassy_boots_widgets_init' );
  */
 function flat_sassy_boots_scripts() {
 	wp_enqueue_style( 'flat-sassy-boots-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'flat-sassy-boots-style', get_template_directory_uri() . '/csds_marquee.css' );
+
+	wp_enqueue_style( 'flat-sassy-boots-style-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
 
 	wp_enqueue_script( 'flat-sassy-boots-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 
 	wp_enqueue_script( 'flat-sassy-boots-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+
+	wp_enqueue_script( 'flat-sassy-boots-navbar-adminbar-offset', get_template_directory_uri() . '/js/navbar-adminbar-offset.js', array('jquery'), '20150212', true );
+
+	wp_enqueue_script( 'flat-sassy-boots-superfish', get_template_directory_uri() . '/js/superfish.min.js', array('jquery'), '20150212', true );
+
+	wp_enqueue_script( 'flat-sassy-boots-superfish-settings', get_template_directory_uri() . '/js/superfish-settings.js', array('flat-sassy-boots-superfish'), '20140328', true );
+
+	wp_enqueue_script( 'flat-sassy-boots-smooth-scroll', get_template_directory_uri() . '/js/smooth-scroll.js', array('jquery'), '20150212', true );
+
+	wp_enqueue_script( 'flat-sassy-boots-bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js', array(), '20150213', true );
+
+	wp_enqueue_script( 'flat-sassy-boots-masonry-settings-js', get_template_directory_uri() . '/js/masonry-settings.js', array('masonry'), '20150213', true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -115,7 +144,7 @@ add_action( 'wp_enqueue_scripts', 'flat_sassy_boots_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-//require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -136,3 +165,8 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load a custom nav walker for building menus using Bootstrap syntax
+ */
+// require_once('wp_bootstrap_navwalker.php');

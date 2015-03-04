@@ -4,35 +4,22 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' ); ?>
+<article class = "" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php
+		if (has_post_thumbnail()) {
+		    echo '<div class="small-index-thumbnail clear">';
+		    echo '<a href="' . get_permalink() . '" title="' . __('Read ', 'flat-sassy-boots') . get_the_title() . '" rel="bookmark">';
+		    echo the_post_thumbnail('index-thumb');
+		    echo '</a>';
+		    echo '</div>';
+		}
+	?>
+	<div class="well col-xs-12">
+		<?php the_title( sprintf( '<h3 class="text-center"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 
 		<?php if ( 'post' == get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php flat_sassy_boots_posted_on(); ?>
-		</div><!-- .entry-meta -->
+
 		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
-		<?php
-			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'flat-sassy-boots' ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
-		?>
-
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'flat-sassy-boots' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php flat_sassy_boots_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	</div><!-- .entry-header -->
+	
 </article><!-- #post-## -->

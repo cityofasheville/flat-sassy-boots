@@ -1,0 +1,81 @@
+.selected{
+  @extend .active;
+}
+.current{
+  @extend .active;
+}
+#buddypress li{
+  list-style-type: none;
+}
+#group-create-nav{
+  list-style-type: none;
+  margin-top: -3px;
+}
+#group-create-nav a{
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .text-center;
+}
+#group-create-nav a:before{
+  font-family: 'fontawesome';
+  content: "\f0c0";
+  padding-right : 5px;
+}
+
+.dir-search{
+  margin-bottom : 20px;
+}
+#groups-list{
+  margin-top : 2px;
+}
+
+.page-numbers{
+  @extend .btn;
+  @extend .btn-default;
+  width: 35px;
+  padding : 7px;
+  margin-top: 0px;
+}
+
+.item-meta .activity{
+  font-size: 80%;
+}
+
+.item-title a{
+  font-size: 150%;
+}
+
+#group-create-tabs ul{
+  @extend .nav;
+  @extend .nav-tabs;
+  margin-bottom : 20px;
+}
+#group-create-tabs ul li{
+  @extend col-xs-12;
+}
+
+#group-create-tabs ul li span{
+  display: block;
+  margin : 10px;
+  line-height: 1.42857;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  vertical-align : middle;
+}
+
+#upload, #group-creation-create{
+  margin-top: 10px;
+}
+
+.nav-tabs li a {
+  height: 43px !important;
+}
+#members span {
+  @extend .badge;
+}
+
+.action a{
+  @extend .btn;
+  @extend .btn-primary;
+  margin-top : 25px;
+}

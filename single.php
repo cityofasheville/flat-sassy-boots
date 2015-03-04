@@ -7,8 +7,8 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area container">
+		<main id="main" class="site-main col-md-10 col-md-offset-1" role="main">
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
@@ -28,5 +28,5 @@ get_header(); ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
+
 <?php get_footer(); ?>

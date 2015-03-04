@@ -8,7 +8,7 @@
  */
 ?>
 
-<section class="no-results not-found">
+<section class="no-results not-found col-lg-8 col-md-8 col-sm-12">
 	<header class="page-header">
 		<h1 class="page-title"><?php _e( 'Nothing Found', 'flat-sassy-boots' ); ?></h1>
 	</header><!-- .page-header -->
