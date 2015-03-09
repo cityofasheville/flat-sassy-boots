@@ -11,7 +11,7 @@
 
 <?php do_action( 'bp_before_member_header' ); ?>
 
-<div id="item-header-avatar">
+<div id="item-header-avatar ">
 	<a href="<?php bp_displayed_user_link(); ?>">
 
 		<?php bp_displayed_user_avatar( 'type=full' ); ?>
@@ -21,25 +21,12 @@
 
 <div id="item-header-content">
 
-	<?php if ( bp_is_active( 'activity' ) && bp_activity_do_mentions() ) : ?>
-		<h2 class="user-nicename">@<?php bp_displayed_user_mentionname(); ?></h2>
-	<?php endif; ?>
-
 	<span class="activity"><?php bp_last_activity( bp_displayed_user_id() ); ?></span>
 
 	<?php do_action( 'bp_before_member_header_meta' ); ?>
 
 	<div id="item-meta">
 
-		<?php if ( bp_is_active( 'activity' ) ) : ?>
-
-			<div id="latest-update">
-
-				<?php bp_activity_latest_update( bp_displayed_user_id() ); ?>
-
-			</div>
-
-		<?php endif; ?>
 
 		<div id="item-buttons">
 

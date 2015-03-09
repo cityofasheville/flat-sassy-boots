@@ -14,7 +14,7 @@
 
 <?php do_action( 'bp_before_activity_comment' ); ?>
 
-<li id="acomment-<?php bp_activity_comment_id(); ?>">
+<li id="acomment-<?php bp_activity_comment_id(); ?>" class = "list-item-panel" style = "margin : 20px; padding : 10px">
 	<div class="acomment-avatar">
 		<a href="<?php bp_activity_comment_user_link(); ?>">
 			<?php bp_activity_avatar( 'type=thumb&user_id=' . bp_get_activity_comment_user_id() ); ?>

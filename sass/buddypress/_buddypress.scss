@@ -37,7 +37,7 @@
   margin-top: 0px;
 }
 
-.item-meta .activity{
+.item-meta .activity, .activity-header{
   font-size: 80%;
 }
 
@@ -70,12 +70,110 @@
 .nav-tabs li a {
   height: 43px !important;
 }
-#members span {
+#members span, #members-all span, #members-personal span, .count {
   @extend .badge;
 }
 
-.action a{
+.group-button a{
   @extend .btn;
   @extend .btn-primary;
   margin-top : 25px;
+}
+
+.activity-read-more a, #latest-update a {
+  margin-left : 10px;
+  font-size: 14px;
+  @extend .btn;
+  @extend .btn-info;
+  @extend .btn-sm;
+  line-height: 1;
+  margin-bottom : 5px;
+}
+.generic-button {
+  display: inline;
+}
+.generic-button a{
+  @extend .btn;
+  @extend .btn-primary;
+  line-height: 1;
+  margin-left : 2px;
+}
+
+.profile-field-value p{
+  margin-top: 11px;
+}
+
+.list-item-panel{
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); 
+  margin : 5px;
+}
+
+.checkbox label{
+  @extend .checkbox-inline;
+}
+.radio label{
+  @extend .radio-inline;
+}
+.radio:first-child{
+  font-weight : bold;
+  display: inline-block;
+}
+.checkbox:first-child{
+  font-weight : bold;
+  display: inline-block;
+}
+
+#notification-bulk-manage, #messages-bulk-manage, #aw-whats-new-submit{
+  margin-top: 20px; 
+  margin-bottom: 20px; 
+}
+
+.list-group li{
+  @extend .list-group-item;
+}
+
+.selected a{
+ color : white; 
+}
+
+
+.notification-settings .icon{
+  width: 5px;
+}
+
+.notification-settings .title {
+  width: 80%
+}
+
+#wp-admin-bar-my-account-settings-general, #general-personal-li, #profile-personal-li, #wp-admin-bar-my-account-settings-profile{
+  display: none
+}
+
+.ass-email-type{
+  @extend .radio;
+}
+
+#ass-save{
+  margin-bottom: 20px;
+}
+
+.delete-activity, .acomment-delete{
+  @extend .btn;
+  @extend .btn-danger;
+}
+#what-new-content{
+  margin-bottom: 40px;
+}
+#aw-whats-new-submit{
+  margin-bottom: 20px !important;
+}
+.acomment-reply{
+  @extend .btn;
+  @extend .btn-info;
+}
+.activity-comments, .ac-reply-content, #whats-new-form{
+  margin-top : 20px;
+}
+.group-subscription-div{
+  display: none;
 }

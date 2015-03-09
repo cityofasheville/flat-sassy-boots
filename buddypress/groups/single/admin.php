@@ -1,11 +1,21 @@
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
+<div class="item-list-tabs no-ajax col-md-2 visible-md-block visible-lg-block" id="subnav" role="navigation">
 
-	<ul class = "nav nav-tabs" style = "margin-top : 20px">
+	<ul class = "list-group" style = "margin-top : 20px">
 		<?php bp_group_admin_tabs(); ?>
 	</ul>
 </div><!-- .item-list-tabs -->
 
-<form action="<?php bp_group_admin_form_action(); ?>" name="group-settings-form" id="group-settings-form" class="standard-form" method="post" enctype="multipart/form-data" role="main">
+<div class="item-list-tabs no-ajax dropdown visible-xs-block visible-sm-block" id="subnav" role="navigation"  style = "width : 100%; margin-bottom : 20px; margin-top : 20px" >
+	<button class="btn btn-default dropdown-toggle" style = "width : 100%; text-align : left" type="button" id="managedropdown" data-toggle="dropdown" aria-expanded="true">   
+    <h5>Manage Options <i class="fa fa-chevron-down pull-right"></i></h5>
+  </button>
+	<ul class = "dropdown-menu" aria-labelledby="managedropdown" style = "width : 100%">
+		<?php bp_group_admin_tabs(); ?>
+	</ul>
+</div><!-- .item-list-tabs -->
+
+
+<form action="<?php bp_group_admin_form_action(); ?>" name="group-settings-form" id="group-settings-form" class="standard-form col-md-10 well col-xs-12" style = "margin-top : 20px" method="post" enctype="multipart/form-data" role="main">
 
 <?php do_action( 'bp_before_group_admin_content' ); ?>
 

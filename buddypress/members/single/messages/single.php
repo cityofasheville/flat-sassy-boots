@@ -1,4 +1,4 @@
-<div id="message-thread" role="main">
+<div id="message-thread" class = "well col-md-10 col-xs-12" role="main">
 
 	<?php do_action( 'bp_before_message_thread_content' ); ?>
 
@@ -98,11 +98,11 @@
 
 					<?php do_action( 'bp_before_message_reply_box' ); ?>
 
-					<textarea name="content" id="message_content" rows="15" cols="40"></textarea>
+					<textarea name="content" id="message_content" rows="15" cols="40" style = "margin-top : 20px"></textarea>
 
 					<?php do_action( 'bp_after_message_reply_box' ); ?>
 
-					<div class="submit">
+					<div class="submit" style = "margin : 20px">
 						<input type="submit" name="send" value="<?php esc_attr_e( 'Send Reply', 'buddypress' ); ?>" id="send_reply_button"/>
 					</div>
 

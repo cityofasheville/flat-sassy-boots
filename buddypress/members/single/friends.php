@@ -10,8 +10,11 @@
 ?>
 
 <div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul>
+	<ul class="nav nav-tabs">
 		<?php if ( bp_is_my_profile() ) bp_get_options_nav(); ?>
+	</ul>
+	<ul>
+		
 
 		<?php if ( !bp_is_current_action( 'requests' ) ) : ?>
 

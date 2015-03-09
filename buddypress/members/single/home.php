@@ -8,19 +8,18 @@
 
 	</div><!-- #item-header -->
 
-	<div id="item-nav">
-		<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
-			<ul>
-
+	<!-- <div id="item-nav" class = "col-xs-12 col-md-6">
+		<div class="dropdown" id="object-nav" role="navigation" style = "width : 100%; margin-top : 20px" >
+			<button class="btn btn-default dropdown-toggle"  style = "width : 100%; text-align : left" type="button" id="membersingledropdown" data-toggle="dropdown" aria-expanded="true">
+		    <h5>Menu <i class="fa fa-chevron-down pull-right"></i></h5>
+		  </button>
+			<ul class = "dropdown-menu" role="menu" aria-labelledby="membersingledropdown" style = "width : 100%">
 				<?php bp_get_displayed_user_nav(); ?>
-
 				<?php do_action( 'bp_member_options_nav' ); ?>
-
 			</ul>
 		</div>
-	</div><!-- #item-nav -->
-
-	<div id="item-body" role="main">
+	</div> -->
+	<div id="item-body" role="main" class = "">
 
 		<?php do_action( 'bp_before_member_body' );
 

@@ -20,14 +20,13 @@
 
 	<form action="<?php echo bp_loggedin_user_domain() . bp_get_messages_slug() . '/' . bp_current_action() ?>/bulk-manage/" method="post" id="messages-bulk-management">
 
-		<table id="message-threads" class="messages-notices">
+		<table id="message-threads" class="messages-notices table table-hover" style = "background : #fff">
 
 			<thead>
-				<tr>
-					<th scope="col" class="thread-checkbox"><label class="bp-screen-reader-text" for="select-all-messages"><?php _e( 'Select all', 'buddypress' ); ?></label><input id="select-all-messages" type="checkbox"></th>
+				<tr class = "info">
+					<th scope="col" class="thread-checkbox"><input id="select-all-messages" type="checkbox"></th>
 					<th scope="col" class="thread-from"><?php _e( 'From', 'buddypress' ); ?></th>
 					<th scope="col" class="thread-info"><?php _e( 'Subject', 'buddypress' ); ?></th>
-					<th scope="col" class="thread-options"><?php _e( 'Actions', 'buddypress' ); ?></th>
 				</tr>
 			</thead>
 
@@ -43,15 +42,13 @@
 						<?php if ( 'sentbox' != bp_current_action() ) : ?>
 							<td class="thread-from">
 								<?php bp_message_thread_avatar( array( 'width' => 25, 'height' => 25 ) ); ?>
-								<span class="from"><?php _e( 'From:', 'buddypress' ); ?></span> <?php bp_message_thread_from(); ?>
-								<?php bp_message_thread_total_and_unread_count(); ?>
+								<?php bp_message_thread_from(); ?>
 								<span class="activity"><?php bp_message_thread_last_post_date(); ?></span>
 							</td>
 						<?php else: ?>
 							<td class="thread-from">
 								<?php bp_message_thread_avatar( array( 'width' => 25, 'height' => 25 ) ); ?>
-								<span class="to"><?php _e( 'To:', 'buddypress' ); ?></span> <?php bp_message_thread_to(); ?>
-								<?php bp_message_thread_total_and_unread_count(); ?>
+								<?php bp_message_thread_to(); ?>
 								<span class="activity"><?php bp_message_thread_last_post_date(); ?></span>
 							</td>
 						<?php endif; ?>
@@ -63,15 +60,7 @@
 
 						<?php do_action( 'bp_messages_inbox_list_item' ); ?>
 
-						<td class="thread-options">
-							<?php if ( bp_message_thread_has_unread() ) : ?>
-								<a class="read" href="<?php bp_the_message_thread_mark_read_url();?>"><?php _e( 'Read', 'buddypress' ); ?></a>
-							<?php else : ?>
-								<a class="unread" href="<?php bp_the_message_thread_mark_unread_url();?>"><?php _e( 'Unread', 'buddypress' ); ?></a>
-							<?php endif; ?>
-							 |
-							<a class="delete" href="<?php bp_message_thread_delete_link(); ?>"><?php _e( 'Delete', 'buddypress' ); ?></a>
-						</td>
+					
 					</tr>
 
 				<?php endwhile; ?>

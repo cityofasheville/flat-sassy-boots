@@ -3,18 +3,21 @@
 if ( bp_has_profile( 'profile_group_id=' . bp_get_current_profile_group_id() ) ) :
 	while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
 
-<form action="<?php bp_the_profile_group_edit_form_action(); ?>" method="post" id="profile-edit-form" class="standard-form <?php bp_the_profile_group_slug(); ?>">
+<form action="<?php bp_the_profile_group_edit_form_action(); ?>" method="post" id="profile-edit-form" class="standard-form horizontal-form <?php bp_the_profile_group_slug(); ?>">
 
 	<?php do_action( 'bp_before_profile_field_content' ); ?>
 
 		<h4><?php printf( __( "Editing '%s' Profile Group", "buddypress" ), bp_get_the_profile_group_name() ); ?></h4>
 
 		<?php if ( bp_profile_has_multiple_groups() ) : ?>
-			<ul class="button-nav">
-
+		<div class="item-list-tabs no-ajax dropdown" style = "width : 100%" id="subnav" role="navigation">
+			<button class="btn btn-default dropdown-toggle" style = "width : 100%; text-align : left" type="button" id="profileeditsingledropdown" data-toggle="dropdown" aria-expanded="true">   
+		    <h5>Edit Profile Fields <i class="fa fa-chevron-down pull-right"></i></h5>
+		  </button>	
+		  <ul class = "button-nav dropdown-menu" aria-labelledby="profileeditsingledropdown" style = "width : 100%">
 				<?php bp_profile_group_tabs(); ?>
-
 			</ul>
+		</div>
 		<?php endif ;?>
 
 		<div class="clear"></div>

@@ -26,7 +26,7 @@
 
 		<?php while ( bp_group_members() ) : bp_group_the_member(); ?>
 
-			<li class = "list-group-item col-xs-12" style = "box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); margin : 3px;">
+			<li class = "list-group-item col-xs-12 list-item-panel">
 				<div class="col-xs-12 col-md-10">
 					<a  class = "col-xs-12 col-md-1" style = "margin-top : 15px" href="<?php bp_group_member_domain(); ?>">
 

@@ -52,12 +52,12 @@ jq(document).ready( function() {
 
   /* Textarea focus */
   $whats_new.focus( function(){
-    jq('#whats-new-options').animate({
-      height:'40px'
-    });
-    jq('#whats-new-form textarea').animate({
-      height:'50px'
-    });
+    // jq('#whats-new-options').animate({
+    //   height:'40px'
+    // });
+    // jq('#whats-new-form textarea').animate({
+    //   height:'50px'
+    // });
     jq('#aw-whats-new-submit').prop('disabled', false);
 
     var $whats_new_form = jq('form#whats-new-form'),
@@ -86,12 +86,12 @@ jq(document).ready( function() {
     if ( document.activeElement !== this ) {
       if (!this.value.match(/\S+/)) {
         this.value = '';
-        jq('#whats-new-options').animate({
-          height:'40px'
-        });
-        jq('form#whats-new-form textarea').animate({
-          height:'20px'
-        });
+        // jq('#whats-new-options').animate({
+        //   height:'40px'
+        // });
+        // jq('form#whats-new-form textarea').animate({
+        //   height:'20px'
+        // });
         jq('#aw-whats-new-submit').prop('disabled', true);
       }
     }
@@ -509,7 +509,9 @@ jq(document).ready( function() {
   }
 
   /* Activity list event delegation */
-  jq('div.activity').on( 'click', function(event) {
+  jq('.acomment-reply').on( 'click', function(event) {
+    console.log('balls');
+
     var target = jq(event.target),
       id, ids, a_id, c_id, form,
       form_parent, form_id,
@@ -813,6 +815,7 @@ jq(document).ready( function() {
 
     var target = jq(event.target),
       css_id, object, template;
+    console.log(target);
 
     if ( target.attr('type') === 'submit' ) {
       css_id = jq('.item-list-tabs li.selected').attr('id').split( '-' );
@@ -825,7 +828,12 @@ jq(document).ready( function() {
         template = 'groups/single/members';
       }
 
-      bp_filter_request( object, jq.cookie('bp-' + object + '-filter'), jq.cookie('bp-' + object + '-scope') , 'div.' + object, target.parent().children('label').children('input').val(), 1, jq.cookie('bp-' + object + '-extras'), null, template );
+      //***COACHANGE*** 
+      //CHANGED target.parent().children('label').children('input').val()
+      //TO target.parent().children('input').val()
+      //BELOW
+      console.log(target.parent().children('input:text').val());
+      bp_filter_request( object, jq.cookie('bp-' + object + '-filter'), jq.cookie('bp-' + object + '-scope') , 'div.' + object, target.parent().parent().children('input:text').val(), 1, jq.cookie('bp-' + object + '-extras'), null, template );
 
       return false;
     }

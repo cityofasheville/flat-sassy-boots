@@ -9,16 +9,19 @@
 
 ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul>
+<div class="item-list-tabs no-ajax col-xs-12" id="subnav" role="navigation">
+	<ul class = "nav nav-tabs">
 		<?php bp_get_options_nav(); ?>
-
+	</ul>
+</div>
+<div class="col-xs-12">
+	<ul>
 		<li id="members-order-select" class="last filter">
 			<?php bp_notifications_sort_order_form(); ?>
 		</li>
 	</ul>
+	
 </div>
-
 <?php
 switch ( bp_current_action() ) :
 

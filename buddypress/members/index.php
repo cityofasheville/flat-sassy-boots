@@ -6,8 +6,8 @@
 
 	<?php do_action( 'bp_before_directory_members_content' ); ?>
 
-	<div id="members-dir-search" class="dir-search" role="search">
-		<?php flat_sassy_boots_bp_directory_members_search_form(); ?>
+	<div id="members-dir-search" class="dir-search col-sm-6 col-xs-12 pull-right" role="search" style = "margin-bottom : 0px; margin-top : -10px;">
+ 		<?php flat_sassy_boots_bp_directory_members_search_form(); ?>
 	</div><!-- #members-dir-search -->
 
 	<?php do_action( 'bp_before_directory_members_tabs' ); ?>
@@ -16,7 +16,7 @@
 
 		<div class="item-list-tabs" role="navigation">
 			<ul class="nav nav-tabs">
-				<li class="selected" id="members-all"><a href="<?php bp_members_directory_permalink(); ?>"><?php printf( __( 'All Members <span>%s</span>', 'buddypress' ), bp_get_total_member_count() ); ?></a></li>
+				<li class="selected" id="members-all"><a href="<?php bp_members_directory_permalink(); ?>"><?php printf( __( 'All Members <span>%s</span>', 'buddypress' ), flat_sassy_boots_bp_get_total_member_count() ); ?></a></li>
 
 				<?php if ( is_user_logged_in() && bp_is_active( 'friends' ) && bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>
 					<li id="members-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_friends_slug() . '/my-friends/'; ?>"><?php printf( __( 'My Friends <span>%s</span>', 'buddypress' ), bp_get_total_friend_count( bp_loggedin_user_id() ) ); ?></a></li>

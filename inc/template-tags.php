@@ -346,7 +346,67 @@ function flat_sassy_boots_bp_directory_members_search_form() {
 	echo apply_filters( 'bp_directory_members_search_form', $search_form_html );
 }
 
+/**
+ * Output the Private Message search form.
+ *
+ * @todo  Move markup to template part in: /members/single/messages/search.php
+ * @since BuddyPress (1.6.0)
+ */
+function flat_sassy_boots_bp_message_search_form() {
 
+	// Get the default search text
+	$default_search_value = bp_get_search_default_text( 'messages' );
+
+	// Setup a few values based on what's being searched for
+	$search_submitted     = ! empty( $_REQUEST['s'] ) ? stripslashes( $_REQUEST['s'] ) : $default_search_value;
+	$search_placeholder   = ( $search_submitted === $default_search_value ) ? ' placeholder="' .  esc_attr( $search_submitted ) . '"' : '';
+	$search_value         = ( $search_submitted !== $default_search_value ) ? ' value="'       .  esc_attr( $search_submitted ) . '"' : '';
+
+	// Start the output buffer, so form can be filtered
+	ob_start(); ?>
+
+	<form action="" method="get" id="search-message-form">
+		<div class="input-group">
+			<input class = "form-control" type="text" name="s" id="messages_search"<?php echo $search_placeholder . $search_value; ?> />
+			<span class="input-group-btn">
+				<input type="submit" class="button" id="messages_search_submit" name="messages_search_submit" value="<?php esc_html_e( 'Search', 'buddypress' ); ?>" />
+			</span>
+		</div>
+	</form>
+
+	<?php
+
+	// Get the search form from the above output buffer
+	$search_form_html = ob_get_clean();
+
+	/**
+	 * Filters the private message component search form.
+	 *
+	 * @since BuddyPress (2.2.0)
+	 *
+	 * @param string $search_form_html HTML markup for the message search form.
+	 */
+	echo apply_filters( 'bp_message_search_form', $search_form_html );
+}
+
+/**
+	 * Return the total member count in your BP instance.
+	 *
+	 * Since BuddyPress 1.6, this function has used bp_core_get_active_member_count(),
+	 * which counts non-spam, non-deleted users who have last_activity.
+	 * This value will correctly match the total member count number used
+	 * for pagination on member directories.
+	 *
+	 * Before BuddyPress 1.6, this function used bp_core_get_total_member_count(),
+	 * which did not take into account last_activity, and thus often
+	 * resulted in higher counts than shown by member directory pagination.
+	 *
+	 * @return int Member count.
+	 */
+	function flat_sassy_boots_bp_get_total_member_count() {
+		return apply_filters( 'bp_get_total_member_count',bp_core_get_total_member_count() );
+	}
+	add_filter( 'bp_get_total_member_count', 'bp_core_number_format' );
 
 
 /**
@@ -377,3 +437,47 @@ function flat_sassy_boots_bp_groups_members_template_part() {
 	</div>
 	<?php
 }
+/**
+ * Output the action links for the current notification.
+ *
+ * @since BuddyPress (1.9.0)
+ */
+function flat_sassy_boots_bp_the_notification_action_links( $args = '' ) {
+	echo flat_sassy_boots_bp_get_the_notification_action_links( $args );
+}
+/**
+	 * Return the action links for the current notification.
+	 *
+	 * @since BuddyPress (1.9.0)
+	 *
+	 * @param array $args {
+	 *     @type string $before HTML before the links.
+	 *     @type string $after HTML after the links.
+	 *     @type string $sep HTML between the links.
+	 *     @type array $links Array of links to implode by 'sep'.
+	 * }
+	 *
+	 * @return string HTML links for actions to take on single notifications.
+	 */
+	function flat_sassy_boots_bp_get_the_notification_action_links( $args = '' ) {
+
+		// Parse
+		$r = wp_parse_args( $args, array(
+			'links'  => array(
+				bp_get_the_notification_mark_link(),
+				bp_get_the_notification_delete_link()
+			)
+		) );
+
+		// Build the links
+		$retval = implode( $r['links']);
+
+		/**
+		 * Filters the action links for the current notification.
+		 *
+		 * @since BuddyPress (1.9.0)
+		 *
+		 * @param string $retval HTML links for actions to take on single notifications.
+		 */
+		return apply_filters( 'bp_get_the_notification_action_links', $retval );
+	}

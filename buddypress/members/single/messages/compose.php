@@ -1,5 +1,5 @@
-<form action="<?php bp_messages_form_action('compose' ); ?>" method="post" id="send_message_form" class="standard-form" role="main" enctype="multipart/form-data">
-
+<form action="<?php bp_messages_form_action('compose' ); ?>" method="post" id="send_message_form" class="standard-form col-md-10 col-xs-12" role="main" enctype="multipart/form-data">
+	<h3 class = "text-info">Compose a message</h3>
 	<?php do_action( 'bp_before_messages_compose_content' ); ?>
 
 	<label for="send-to-input"><?php _e("Send To (Username or Friend's Name)", 'buddypress' ); ?></label>
@@ -11,7 +11,7 @@
 	</ul>
 
 	<?php if ( bp_current_user_can( 'bp_moderate' ) ) : ?>
-		<input type="checkbox" id="send-notice" name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?>
+		<!-- <input type="checkbox" id="send-notice" name="send-notice" value="1" /> <?php _e( "This is a notice to all users.", "buddypress" ); ?> -->
 	<?php endif; ?>
 
 	<label for="subject"><?php _e( 'Subject', 'buddypress' ); ?></label>
@@ -24,7 +24,7 @@
 
 	<?php do_action( 'bp_after_messages_compose_content' ); ?>
 
-	<div class="submit">
+	<div class="submit" style = "margin-top : 20px; margin-bottom : 20px">
 		<input type="submit" value="<?php esc_attr_e( "Send Message", 'buddypress' ); ?>" name="send" id="send" />
 	</div>
 

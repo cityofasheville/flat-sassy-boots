@@ -7,6 +7,7 @@
 
 
 jQuery(document).ready(function($){
+
     var setNavbarMarginTopToHeightOfAdminBar = function(){
       var adminBarHeight = $( "#wpadminbar" ).height();
       $(".navbar").css("margin-top", adminBarHeight); 
@@ -19,7 +20,10 @@ jQuery(document).ready(function($){
       $("#home").height($(window).height() - 150);
     });
     $("#home").height($(window).height() - 150);
-
+    $(document).ready(function(){
+        $('.dropdown-toggle').dropdown()
+    });
 
 });
+
 

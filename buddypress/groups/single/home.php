@@ -10,7 +10,7 @@
 
 	</div><!-- #item-header -->
 
-	<div class="col-xs-12"  role="navigation">
+	<div class="col-md-12 visible-md-block visible-lg-block"  role="navigation">
 			<ul class = "nav nav-tabs">
 
 				<?php bp_get_options_nav(); ?>
@@ -19,6 +19,17 @@
 
 			</ul>
 	</div><!-- #item-nav -->
+
+	<div class="item-list-tabs no-ajax dropdown visible-xs-block visible-sm-block" id="subnav" role="navigation"  style = "width : 100%; margin-bottom : 20px; margin-top : 20px" >
+		<button class="btn btn-default dropdown-toggle" style = "width : 100%; text-align : left" type="button" id="groupdropdown" data-toggle="dropdown" aria-expanded="true">   
+	    <h5>Menu Options <i class="fa fa-chevron-down pull-right"></i></h5>
+	  </button>
+		<ul class = "dropdown-menu" aria-labelledby="groupdropdown" style = "width : 100%">
+			<?php bp_get_options_nav(); ?>
+
+				<?php do_action( 'bp_group_options_nav' ); ?>
+		</ul>
+	</div><!-- .item-list-tabs -->
 
 	<div id="item-body" class = "col-xs-12">
 

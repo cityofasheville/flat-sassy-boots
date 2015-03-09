@@ -9,15 +9,19 @@
 
 ?>
 
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-	<ul>
-		<?php bp_get_options_nav(); ?>
-	</ul>
-</div><!-- .item-list-tabs -->
-
+<!-- <div class="col-xs-12 col-md-6" style = "margin-top : 20px">
+	<div class="item-list-tabs no-ajax dropdown" style = "width : 100%" id="subnav" role="navigation">
+		<button class="btn btn-default dropdown-toggle" style = "width : 100%; text-align : left" type="button" id="profilesingledropdown" data-toggle="dropdown" aria-expanded="true">   
+	    <h5>Profile Menu <i class="fa fa-chevron-down pull-right"></i></h5>
+	  </button>
+		<ul class = "dropdown-menu" aria-labelledby="profilesingledropdown" style = "width : 100%">
+			<?php bp_get_options_nav(); ?>
+		</ul>
+	</div>
+</div> -->
 <?php do_action( 'bp_before_profile_content' ); ?>
 
-<div class="profile" role="main">
+<div class="profile col-xs-12 well" style = "margin-top : 20px" role="main">
 
 <?php switch ( bp_current_action() ) :
 

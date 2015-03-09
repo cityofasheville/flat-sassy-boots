@@ -23,7 +23,7 @@
 
 		</div>
 
-		<div class="pagination-links" id="member-dir-pag-top">
+		<div class="pagination-links" id="member-dir-pag-top" style = "margin-top : 8px;">
 
 			<?php bp_members_pagination_links(); ?>
 
@@ -37,14 +37,25 @@
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<li class = "list-group-item" style = "box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); margin : 3px;">
-			<div class="item-avatar">
-				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
+		<li class = "list-group-item list-item-panel">
+			<div class="col-xs-6 col-md-9">
+				<div class="item-avatar col-xs-12 col-md-1" style = "margin-top : 15px">
+					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
+				</div>
+				<h3 class = "col-xs-12 col-md-10"><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></h3>
+			</div>
+			
+			
+
+			<div class="action col-xs-6 col-md-3">
+
+				<?php do_action( 'bp_directory_members_actions' ); ?>
+
 			</div>
 
-			<div class="item">
+			<div class="item col-xs-12">
 				<div class="item-title">
-					<h4><a href="<?php bp_member_permalink(); ?>"><?php bp_member_name(); ?></a></h4>
+				
 
 					<?php if ( bp_get_member_latest_update() ) : ?>
 
@@ -67,12 +78,6 @@
 				  * bp_member_profile_data( 'field=the field name' );
 				  */
 				?>
-			</div>
-
-			<div class="action">
-
-				<?php do_action( 'bp_directory_members_actions' ); ?>
-
 			</div>
 
 			<div class="clear"></div>

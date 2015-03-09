@@ -1,5 +1,5 @@
 <?php do_action( 'bp_before_notices_loop' ); ?>
-
+<h3 class = "text-info">Notices</h3>
 <?php if ( bp_has_message_threads() ) : ?>
 
 	<div class="pagination no-ajax" id="user-pag">

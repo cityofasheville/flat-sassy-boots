@@ -9,7 +9,7 @@
 
 ?>
 
-<form action="<?php bp_activity_post_form_action(); ?>" method="post" id="whats-new-form" name="whats-new-form" role="complementary">
+<form action="<?php bp_activity_post_form_action(); ?>" method="post" id="whats-new-form" name="whats-new-form" role="complementary" class = "col-xs-12 well">
 
 	<?php do_action( 'bp_before_activity_post_form' ); ?>
 
@@ -27,7 +27,7 @@
 
 	<div id="whats-new-content">
 		<div id="whats-new-textarea">
-			<textarea class="bp-suggestions" name="whats-new" id="whats-new" cols="50" rows="10" 
+			<textarea class="bp-suggestions" name="whats-new" id="whats-new" cols="50" rows="1" 
 				<?php if ( bp_is_group() ) : ?>data-suggestions-group-id="<?php echo esc_attr( (int) bp_get_current_group_id() ); ?>" <?php endif; ?>
 			><?php if ( isset( $_GET['r'] ) ) : ?>@<?php echo esc_textarea( $_GET['r'] ); ?> <?php endif; ?></textarea>
 		</div>
