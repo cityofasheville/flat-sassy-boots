@@ -8,3 +8,14 @@
 .csds_marquee a{
   color : #2ecc71 !important;
 }
+
+#rssnewssetting1 a{
+  color : #ecf0f1 !important;
+  font-size: 30px;
+  font: $font-family-sans-serif !important;
+}
+#rssnewssetting1 a:before{
+  font-family: 'fontawesome';
+  content: "\f1ea";
+  margin-right: 5px;
+}

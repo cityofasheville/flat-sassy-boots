@@ -24,14 +24,11 @@
 	<header id="masthead" class="site-header" role="banner">
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			
-			<button class="menu-toggle collapsed" aria-controls="menu" aria-expanded="false"><?php _e( '<i class="fa fa-lg fa-bars"></i>', 'flat-sassy-boots' ); ?></button>
+			<!-- <button class="menu-toggle collapsed" aria-controls="menu" aria-expanded="false"><?php _e( '<i class="fa fa-lg fa-bars"></i>', 'flat-sassy-boots' ); ?></button> -->
       
       <?php    
-        if (is_front_page()){
-          wp_nav_menu( array( 'menu' => 'Front Page Menu' ) );
-        } else {
-          wp_nav_menu( array( 'theme_location' => 'primary' ) );
-        }
+
+        wp_nav_menu( array( 'theme_location' => 'primary' ) );
         ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

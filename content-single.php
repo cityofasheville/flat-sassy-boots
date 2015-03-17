@@ -4,8 +4,8 @@
  */
 ?>
 
-<article class = "container" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+<article class = "" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header col-xs-12">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
@@ -21,7 +21,10 @@
         echo '</div>';
 	    }
 		?>
-		<?php the_content(); ?>
+		<div class="">
+			<?php the_content(); ?>
+		</div>
+		
 
 		<?php
 			wp_link_pages( array(
@@ -31,7 +34,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
+	<footer class="entry-footer col-xs-12">
 
 		<?php flat_sassy_boots_entry_footer(); ?>
 
