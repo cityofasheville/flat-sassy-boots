@@ -3,7 +3,7 @@
     width: 100%;
     display: block;
     clear: both;
-    background: $navbar-default-bg;
+    background: rgb(52, 152, 219);
     border-color: $navbar-default-border;
     position: fixed;
     right: 0;
@@ -301,3 +301,142 @@
 //   @extend .btn-primary;
 //   @extend .col-xs-12;
 // }
+
+.front-page-navigation {
+    width: 100%;
+    display: block;
+    clear: both;
+    position: fixed;
+    right: 0;
+    left: 0;
+    color: $navbar-default-color;
+    z-index: $zindex-navbar-fixed;
+    //@include translate3d(0, 0, 0);
+
+    // Undo the rounded corners
+    @media (min-width: $grid-float-breakpoint) {
+      border-radius: 0;
+    }
+  border-width: 0 0 1px;
+}
+.front-page-navigation ul {
+    list-style: none;
+    padding-left: 10px;
+    margin-right: 10px;
+}
+.front-page-navigation li {
+    float: left;
+    position: relative;
+    margin-right: 20px;
+
+}
+.front-page-navigation a {
+    display: block;
+    padding : 5px;
+    margin-bottom : 10px;
+    font-size: 18px;
+    text-decoration: none;
+    line-height: $line-height-computed;
+    color: white;
+    border-radius : 4px;
+}
+.front-page-navigation ul ul {
+    position: absolute;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    float: left;
+    padding: 0;
+    background: $dropdown-bg;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    border-radius : $border-radius-base;
+}
+.front-page-navigation ul ul ul {
+    left: 99%;
+    top: 0;
+    z-index: 99998;
+}
+.front-page-navigation ul ul a {
+    width: 200px;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    color : $dropdown-link-color;
+}
+.front-page-navigation ul ul li {
+
+}
+.front-page-navigation li:hover > a {
+    text-decoration: none;
+    color: $brand-primary;
+    background: $navbar-default-link-active-bg;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+.front-page-navigation ul ul :hover > a {
+}
+.front-page-navigation ul ul a:hover {
+    // background: $navbar-default-brand-hover-bg;
+}
+.front-page-navigation ul li:hover > ul {
+    display: block;
+}
+.front-page-navigation .current_page_item > a,
+.front-page-navigation .current-menu-item > a,
+.front-page-navigation .current_page_item > a:hover,
+.front-page-navigation .current-menu-item > a:hover {
+    background: $navbar-default-link-active-bg;
+    color: $brand-primary;
+}
+
+.front-page-navigation .current_page_ancestor {
+    background: white;
+}
+
+.front-page-navigation ul ul .current_page_parent,
+.front-page-navigation .current_page_parent .current_page_item > a {
+    background: $navbar-default-link-active-bg;
+    color: $navbar-default-link-active-color;
+} 
+/* Small menu. */
+.menu-toggle {
+  display: none;
+}
+
+.front-page-navigation-brand {
+  float: left;
+  font-size: 27px !important;
+  line-height: $line-height-computed !important;
+  color: $navbar-default-brand-color !important;
+  //color: rgba(48,48,48,1);
+  padding : 10px !important;
+  margin-right : 6px;
+  margin-left : 10px;
+  margin-top: 0px !important;
+  border-radius : 4px;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $navbar-default-brand-hover-color !important;
+    background-color: $navbar-default-brand-hover-bg;
+  }
+
+  @media (min-width: $grid-float-breakpoint) {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
+      margin-left: -$navbar-padding-horizontal;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+        
+  .front-page-navigation li { 
+    width : 100%;
+    
+  }
+  .front-page-navigation li ul li { 
+    width : 100%;
+   
+  }
+
+        
+} // End responsive menu

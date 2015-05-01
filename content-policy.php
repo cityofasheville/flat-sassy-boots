@@ -43,19 +43,14 @@
               <td><?php the_field('effective_date'); ?></td>
               <?php endif ?>
             </tr>
-            <?php if (get_field('filling_instructions') != ''): ?>
+            <?php if (get_field('filing_instructions') != ''): ?>
               <tr>              
                 <td><strong>Filling Instruction</strong></td>
-                <td><?php the_field('filling_instructions'); ?></td>  
+                <td><?php the_field('filing_instructions'); ?></td>  
               </tr>
             <?php endif ?>
 
-            <?php if (get_field('filling_instructions') != ''): ?>
-              <tr>              
-                <td><strong>Policy Number</strong></td>
-                <td><?php the_field('policy_number'); ?></td>  
-              </tr>
-            <?php endif ?>
+    
 
             <?php if (get_field('policy_number') != ''): ?>
               <tr>              

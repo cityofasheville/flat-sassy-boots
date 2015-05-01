@@ -53,7 +53,7 @@ function flat_sassy_boots_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'flat-sassy-boots' ),
-		'navbar-right' => __('Navbar Right Menu', 'flat-sassy-boots'),
+		'front-page-menu' => __('Front Page Menu', 'flat-sassy-boots'),
 	) );
 
 	/*
@@ -101,6 +101,16 @@ function flat_sassy_boots_widgets_init() {
 		'name'          => __( 'Footer Widgets', 'flat-sassy-boots' ),
 		'id'            => 'sidebar-2',
 		'description'   => 'Footer widgets area that appears in the footer of the site',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Front Page Widget Area', 'flat-sassy-boots' ),
+		'id'            => 'front-page-widget-area',
+		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h1 class="widget-title">',

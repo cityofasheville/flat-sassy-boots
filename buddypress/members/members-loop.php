@@ -37,8 +37,8 @@
 
 	<?php while ( bp_members() ) : bp_the_member(); ?>
 
-		<li class = "list-group-item list-item-panel">
-			<div class="col-xs-6 col-md-9">
+		<li class = "list-group-item list-item-panel col-xs-12">
+			<div class="col-xs-12">
 				<div class="item-avatar col-xs-12 col-md-1" style = "margin-top : 15px">
 					<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
 				</div>
@@ -47,11 +47,7 @@
 			
 			
 
-			<div class="action col-xs-6 col-md-3">
-
-				<?php do_action( 'bp_directory_members_actions' ); ?>
-
-			</div>
+			
 
 			<div class="item col-xs-12">
 				<div class="item-title">
@@ -77,6 +73,7 @@
 				  *
 				  * bp_member_profile_data( 'field=the field name' );
 				  */
+				 
 				?>
 			</div>
 

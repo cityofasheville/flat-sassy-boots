@@ -17,9 +17,9 @@ jQuery(document).ready(function($){
     //call it everytime the window resizes
     $( window ).resize(function() {
       setNavbarMarginTopToHeightOfAdminBar();
-      $("#home").height($(window).height() - 160);
+      $("#home").height($(window).height());
     });
-    $("#home").height($(window).height() - 160);
+    $("#home").height($(window).height());
     $(document).ready(function(){
         $('.dropdown-toggle').dropdown()
     });

@@ -73,7 +73,7 @@ img {
   width: 100%;
   display: block;
   clear: both;
-  background: #2980b9;
+  background: #3498db;
   border-color: transparent;
   position: fixed;
   right: 0;
@@ -277,6 +277,109 @@ img {
   background-color: #0f7864;
   border-color: transparent;
   cursor: default; }
+
+.front-page-navigation {
+  width: 100%;
+  display: block;
+  clear: both;
+  position: fixed;
+  right: 0;
+  left: 0;
+  color: #777;
+  z-index: 1030;
+  border-width: 0 0 1px; }
+  @media (min-width: 768px) {
+    .front-page-navigation {
+      border-radius: 0; } }
+
+.front-page-navigation ul {
+  list-style: none;
+  padding-left: 10px;
+  margin-right: 10px; }
+
+.front-page-navigation li {
+  float: left;
+  position: relative;
+  margin-right: 20px; }
+
+.front-page-navigation a {
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  line-height: 21px;
+  color: white;
+  border-radius: 4px; }
+
+.front-page-navigation ul ul {
+  position: absolute;
+  left: 0;
+  z-index: 99999;
+  display: none;
+  float: left;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  border-radius: 4px; }
+
+.front-page-navigation ul ul ul {
+  left: 99%;
+  top: 0;
+  z-index: 99998; }
+
+.front-page-navigation ul ul a {
+  width: 200px;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  color: #7b8a8b; }
+
+.front-page-navigation li:hover > a {
+  text-decoration: none;
+  color: #2980b9;
+  background: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
+
+.front-page-navigation ul li:hover > ul {
+  display: block; }
+
+.front-page-navigation .current_page_item > a, .front-page-navigation .current-menu-item > a, .front-page-navigation .current_page_item > a:hover, .front-page-navigation .current-menu-item > a:hover {
+  background: white;
+  color: #2980b9; }
+
+.front-page-navigation .current_page_ancestor {
+  background: white; }
+
+.front-page-navigation ul ul .current_page_parent, .front-page-navigation .current_page_parent .current_page_item > a {
+  background: white;
+  color: #fff; }
+
+/* Small menu. */
+.menu-toggle {
+  display: none; }
+
+.front-page-navigation-brand {
+  float: left;
+  font-size: 27px !important;
+  line-height: 21px !important;
+  color: #95a5a6 !important;
+  padding: 10px !important;
+  margin-right: 6px;
+  margin-left: 10px;
+  margin-top: 0px !important;
+  border-radius: 4px; }
+  .front-page-navigation-brand:hover, .front-page-navigation-brand:focus {
+    text-decoration: none;
+    color: #3498DB !important;
+    background-color: #b1bdbd; }
+  @media (min-width: 768px) {
+    .navbar > .container .front-page-navigation-brand, .navbar > .container-fluid .front-page-navigation-brand {
+      margin-left: -15px; } }
+
+@media screen and (max-width: 600px) {
+  .front-page-navigation li {
+    width: 100%; }
+  .front-page-navigation li ul li {
+    width: 100%; } }
 
 /*--------------------------------------------------------------
 6.0 Accessibility
@@ -571,13 +674,17 @@ ol.children {
   margin: 0 0 4em;
   font-size: 16px;
   font-size: 1.6rem;
-  width: 100%; }
+  width: 100%;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
 
 .widget-title {
   margin-bottom: 1em;
-  font-size: 24px;
-  font-size: 2.4rem;
-  border-bottom: 2px solid #000; }
+  font-size: 20px;
+  font-size: 2rem;
+  color: #fff; }
 
 .widget a {
   font-weight: 700; }
@@ -678,6 +785,19 @@ ol.children {
   font: "News Cycle", "Arial Narrow Bold", sans-serif !important; }
 
 #rssnewssetting1 a:before {
+  font-family: 'fontawesome';
+  content: "\f1ea";
+  margin-right: 5px; }
+
+#rssnewsdisplay-2 {
+  border: 2px solid #fff; }
+
+#rssnewssettingrssnewsdisplay-2 a {
+  color: #ecf0f1 !important;
+  font-size: 30px;
+  font: "News Cycle", "Arial Narrow Bold", sans-serif !important; }
+
+#rssnewssettingrssnewsdisplay-2 a:before {
   font-family: 'fontawesome';
   content: "\f1ea";
   margin-right: 5px; }
@@ -4880,7 +5000,10 @@ a {
 
 #wpadminbar {
   position: fixed;
-  background: #2980b9; }
+  background: #3498db; }
+
+#wp-admin-bar-wp-logo {
+  display: none; }
 
 .list-item-panel {
   margin: 2px;
@@ -4905,7 +5028,10 @@ a {
 
 #wpadminbar {
   position: fixed;
-  background: #2980b9; }
+  background: #3498db; }
+
+#wp-admin-bar-wp-logo {
+  display: none; }
 
 #buddypress li {
   list-style-type: none; }
