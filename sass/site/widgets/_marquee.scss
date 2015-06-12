@@ -10,7 +10,7 @@
 }
 
 #rssnewssetting1 a{
-  color : #ecf0f1 !important;
+  //color : #ecf0f1 !important;
   font-size: 30px;
   font: $font-family-sans-serif !important;
 }
@@ -21,11 +21,12 @@
 }
 
 #rssnewsdisplay-2{
-  border : 2px solid #fff;
+  //border : 2px solid #fff;
+  background : #fff; 
 }
 #rssnewssettingrssnewsdisplay-2 a{
-  color : #ecf0f1 !important;
-  font-size: 30px;
+  //color : #fff !important;
+  font-size: 22px;
   font: $font-family-sans-serif !important;
 }
 #rssnewssettingrssnewsdisplay-2 a:before{
@@ -33,3 +34,14 @@
   content: "\f1ea";
   margin-right: 5px;
 }
+
+// #rssnewsdisplay-2 .widget-title{
+//   height : 70px;
+//   background-image: url(http://coablog.avlcloud.com/wp-content/uploads/2014/12/city-source-logo-2.gif);
+//   background-size: 180px 40px;
+//     background-repeat: no-repeat;
+//     background-position: left top;
+//     padding : 20px
+
+  
+// }

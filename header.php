@@ -21,11 +21,11 @@
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'flat-sassy-boots' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
+	<header id="masthead" class="site-header hidden-print" role="banner">
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			
-			<!-- <button class="menu-toggle collapsed" aria-controls="menu" aria-expanded="false"><?php _e( '<i class="fa fa-lg fa-bars"></i>', 'flat-sassy-boots' ); ?></button> -->
-      
+			
+      <button class="menu-toggle collapsed" aria-controls="menu" aria-expanded="false"><?php _e( '<i class="fa fa-lg fa-bars"></i>', 'flat-sassy-boots' ); ?></button>
       <?php    
 
         wp_nav_menu( array( 'theme_location' => 'primary' ) );

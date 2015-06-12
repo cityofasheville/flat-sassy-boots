@@ -3,13 +3,15 @@
     width: 100%;
     display: block;
     clear: both;
-    background: rgb(52, 152, 219);
+    background: $navbar-default-bg;
     border-color: $navbar-default-border;
     position: fixed;
     right: 0;
     left: 0;
     color: $navbar-default-color;
     z-index: $zindex-navbar-fixed;
+    font-family: Lato, "Arial Narrow Bold", sans-serif;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175);
     //@include translate3d(0, 0, 0);
 
     // Undo the rounded corners
@@ -17,7 +19,7 @@
       border-radius: 0;
     }
     top: 32px;
-  border-width: 0 0 1px;
+    border-width: 0 0 1px;
 }
 .main-navigation ul {
     list-style: none;
@@ -28,8 +30,8 @@
     float: left;
     position: relative;
     margin-right: 20px;
-
 }
+
 .main-navigation a {
     display: block;
     padding : 5px;
@@ -41,6 +43,7 @@
     color: white;
     border-radius : 4px;
 }
+
 .main-navigation ul ul {
     position: absolute;
     left: 0;
@@ -50,6 +53,7 @@
     padding: 0;
     background: $dropdown-bg;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+
 }
 .main-navigation ul ul ul {
     left: 99%;
@@ -59,14 +63,14 @@
 .main-navigation ul ul a {
     width: 200px;
     padding: 0.5em 0.5em;
-    color : $dropdown-link-color;
+    color : #fff;
 }
 .main-navigation ul ul li {
 
 }
 .main-navigation li:hover > a {
     text-decoration: none;
-    color: $brand-primary;
+    color: $navbar-default-link-hover-color;
     background: $navbar-default-link-active-bg;
 }
 .main-navigation ul ul :hover > a {
@@ -82,7 +86,7 @@
 .main-navigation .current_page_item > a:hover,
 .main-navigation .current-menu-item > a:hover {
     background: $navbar-default-link-active-bg;
-    color: $brand-primary;
+    color: $navbar-default-link-hover-color;
 }
 
 .main-navigation .current_page_ancestor {
@@ -132,28 +136,19 @@
     margin-right : 10px; 
     margin-top : 15px;
     margin-bottom : 2px;
+    padding : 10px;
     color: white;
     background : $navbar-default-bg;
     border : none;
     outline: none;
+    box-shadow: none;
   }
 
-  .menu-toggle i{
-     border : none;
-     &:hover,
-      &:focus {
-          text-decoration: none;
-        color: $navbar-default-brand-hover-color;
-        background-color: $navbar-default-brand-hover-bg;
-      } 
-  }
+  
         
   .main-navigation.toggled .nav-menu {
     display: block;
-    margin-top : 50px;
-    border-top: 1px solid;
-    border-top-color: #fff;
-    border-top-color: hsla(0, 0%, 100%, .5);
+    margin-top : 55px;
   }
 
 
@@ -167,7 +162,7 @@
   }
 
   .main-navigation li a { 
-    padding: 1.3em 2em; 
+    padding: 1.3em 1em; 
   }
 
   .main-navigation li li a { 
@@ -310,7 +305,7 @@
     right: 0;
     left: 0;
     color: $navbar-default-color;
-    z-index: $zindex-navbar-fixed;
+    z-index: $zindex-navbar-fixed - 1;
     //@include translate3d(0, 0, 0);
 
     // Undo the rounded corners
@@ -334,7 +329,8 @@
     display: block;
     padding : 5px;
     margin-bottom : 10px;
-    font-size: 18px;
+    font-size: 10px;
+    font-size: 1.0em;
     text-decoration: none;
     line-height: $line-height-computed;
     color: white;
@@ -347,9 +343,8 @@
     display: none;
     float: left;
     padding: 0;
-    background: $dropdown-bg;
+    background: $navbar-default-link-active-bg;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-    border-radius : $border-radius-base;
 }
 .front-page-navigation ul ul ul {
     left: 99%;
@@ -359,16 +354,15 @@
 .front-page-navigation ul ul a {
     width: 200px;
     padding: 0.5em 0.5em 0.5em 0.5em;
-    color : $dropdown-link-color;
+    color : white;
 }
 .front-page-navigation ul ul li {
 
 }
 .front-page-navigation li:hover > a {
     text-decoration: none;
-    color: $brand-primary;
+    color: $navbar-default-link-hover-color;
     background: $navbar-default-link-active-bg;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
 }
 .front-page-navigation ul ul :hover > a {
 }
@@ -396,9 +390,7 @@
     color: $navbar-default-link-active-color;
 } 
 /* Small menu. */
-.menu-toggle {
-  display: none;
-}
+
 
 .front-page-navigation-brand {
   float: left;

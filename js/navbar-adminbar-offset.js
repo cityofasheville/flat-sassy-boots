@@ -17,9 +17,21 @@ jQuery(document).ready(function($){
     //call it everytime the window resizes
     $( window ).resize(function() {
       setNavbarMarginTopToHeightOfAdminBar();
-      $("#home").height($(window).height());
+      if($("#home").height() < $(window).height()){
+         $("#home").height($(window).height());
+      }
+      if($("#primary").height() < $(window).height()){
+         $("#primary").height($(window).height());
+      }
+     
     });
-    $("#home").height($(window).height());
+    if($("#home").height() < $(window).height()){
+         $("#home").height($(window).height());
+      }
+      if($("#primary").height() < $(window).height()){
+         $("#primary").height($(window).height());
+      }
+    //$("#home").height($(window).height());
     $(document).ready(function(){
         $('.dropdown-toggle').dropdown()
     });

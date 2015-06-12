@@ -108,7 +108,7 @@ gulp.task('reload', ['styles'], function() {
 //***** WATCH TASKS ******//
 
 gulp.task('watch',function () {
-  gulp.watch('sass/**/*.scss', ['styles']);
+  gulp.watch(['sass/**/*.scss', 'js/**/*'], ['styles', 'policyjs']);
 });
 
 
@@ -127,6 +127,35 @@ gulp.task('bpress-styles', function () {
       .on('error', handleError)
       .pipe(gulp.dest('buddypress/css')) 
       .pipe(size());
+});
+
+gulp.task('policyjs', function () {
+  var applicationJavaScript = gulp.src(['js/policy-app/*js']);
+    //Convert HTML Templates into AngularJS Template Caches, and pipe into stream
+    var htmlTemplateCacheJavaScript = gulp.src('js/policy-app/*.html')
+      .pipe(minifyHTML({
+        empty: true,
+        spare: true,
+        quotes: true
+      }))
+      .pipe(ngHTML2js({
+        moduleName: 'policy'
+      }))
+      .pipe(concat('templateCache.js'));
+  //Collect application JavaScript into a stream
+  
+  //Merges to two streams of JavaScript files
+  return es.merge(applicationJavaScript, htmlTemplateCacheJavaScript)
+      .pipe(concat('app.js'))
+      .pipe(jshint())
+      .pipe(jshint.reporter('jshint-stylish'))
+      .pipe(ngAnnotate())
+      .pipe(gulp.dest('js/dev'))
+      .pipe(rename('app.min.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('js/dist'))
+      .pipe(size());
+
 });
 
 

@@ -2,23 +2,33 @@
     margin: 0 0 4em;
     font-size: 16px;
     font-size: 1.6rem;
-    width: 100%;
-    border : 2px solid #fff;
-    border-radius : $border-radius-base;
-    padding : 20px;
+    height: 300px;
+    overflow: scroll;
+    //width: 100%;
+    @extend .col-xs-12;
+    @extend .col-sm-6;
+    @extend .col-md-4;
+    @extend .col-lg-12;
+    border : 10px solid #3498db;
+    //border-radius : $border-radius-base;
+    padding : 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background: #fff;
 }
 
 .widget-title {
     margin-bottom: 1em;    
-    font-size: 20px;
-    font-size: 2.0rem;
-    //border-bottom: 2px solid #fff; 
-    color: #fff;   
+    font-size: 22px;
+    font-size: 2.2rem;
+    border-bottom: 2px solid #ccc; 
+    color: $text-color;  
+    font-family: Lato, "Arial Narrow Bold", sans-serif;
+    //font-family: "Dawning of a New Day", cursive;
+    //font-family: 'Cedarville Cursive', cursive;
 }
 
 .widget a {
-    font-weight: 700;
+    //font-weight: 700;
 }
 
 .widget ul,
@@ -110,4 +120,25 @@
         width: 100%;
         margin: 0 0 8rem;
     }
+}
+
+.item-avatar {
+    float : left;
+    margin : 3px;
+}
+// .widget_bp_core_whos_online_widget{
+//     background: #34495e;
+//     height: 200px;
+// }
+.widget_bp_core_sitewide_messages{
+    background: #27ae60;
+}
+
+.widget_bp_groups_widget a{
+    color: #fff;
+}
+
+.widget_text{
+    background: #2980b9;
+    color : #fff;
 }
